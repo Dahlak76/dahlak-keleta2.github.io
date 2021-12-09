@@ -12,7 +12,9 @@
  */
 function printArrayValues(array) {
   // YOUR CODE BELOW HERE //
-  
+  for(var i = 0; i < array.length; i++){
+    console.log(array[i]);
+  }
   
   
   
@@ -25,7 +27,9 @@ function printArrayValues(array) {
  */
 function printArrayValuesInReverse(array) {
   // YOUR CODE BELOW HERE //
-  
+  for( var i = array.length - 1; i >= 0; i--){
+    console.log(array[i]);
+  }
   
   
   
@@ -37,7 +41,7 @@ function printArrayValuesInReverse(array) {
  */
 function getObjectKeys(object) {
   // YOUR CODE BELOW HERE //
-  
+ return Object.values(object);
   
   
   
