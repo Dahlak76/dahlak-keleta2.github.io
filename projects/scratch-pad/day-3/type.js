@@ -54,7 +54,7 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    if(Array.isArray(value) === true || typeof value === true && value !== null && value instanceof Date === false){
+    if(Array.isArray(value) === true || typeof value === "object" && value !== null && value instanceof Date === false){
         return true;
     }else{
         return false;
@@ -90,10 +90,12 @@ function typeOf(value) {
         return typeof value;
     }else if(value === null){
         return "null";
-    }else if(value === "object"){
-        return "object";
-    }else if(value === Array.isArray){
+    }else if(Array.isArray(value) === true){
         return "array";
+    }else if(value instanceof Date){
+        return "date";
+    }else{
+        return "object";
     }
     
     
