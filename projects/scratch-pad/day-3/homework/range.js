@@ -25,7 +25,7 @@ function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
     var output = [];
     if(start < end){
-        for(var i = start; i <= end.length; i++){
+        for(var i = start; i <= end; i++){
             output.push(i);
 
         }

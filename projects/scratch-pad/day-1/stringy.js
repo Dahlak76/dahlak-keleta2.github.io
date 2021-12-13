@@ -103,7 +103,7 @@ function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
 var endStr = string.toLowerCase();
 var endChar = char.toLowerCase();
-if(endStr[length - 1] === endChar){
+if(endStr[string.length - 1] === endChar){
     return true;
 }else{
     return false;
