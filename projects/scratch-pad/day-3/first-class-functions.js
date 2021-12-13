@@ -111,16 +111,16 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    // var strPass = true;
-    // for(var i = 0; i < strings.length; i++){
-    //     if(test(strings[i] === true){
-    //         strPass;
-    //     }else{
-    //         return false;
-    //     }
-    //     return strPass;
-    // }
-    
+    var strPass = true;
+    for(var i = 0; i < strings.length; i++){
+        if(test(strings[i])){
+            strPass;
+        }else{
+            return false;
+        }
+       
+    }
+    return strPass;
     
     
     // YOUR CODE ABOVE HERE //
