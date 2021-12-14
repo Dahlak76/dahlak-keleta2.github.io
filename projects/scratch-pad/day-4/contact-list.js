@@ -58,7 +58,7 @@ function makeContactList() {
         },
         findContact: function(fullName){
             for(var i = 0; i < contacts.length; i++) {
-                if(fullName === contacts[i][nameFirst] + " " + contacts[i][nameLast]){
+                if(fullName === contacts[i]["nameFirst"] + " " + contacts[i]["nameLast"]){
                     return contacts[i];
                 }
 
@@ -71,6 +71,17 @@ function makeContactList() {
                     return contacts.splice(i, 1);
                 }
             }
+        },
+        printAllContactNames: function() {
+            var returnList = "";
+            for(var i = 0; i < contacts.length; i++){
+                if(i < contacts.length - 1){
+                    returnList += contacts[i].nameFirst + " " + contacts[i].nameLast + "\n";
+                }else if(i === contacts.length - 1){
+                    returnList += contacts[i].nameFirst + " " + contacts[i].nameLast;
+                }
+            }
+            return returnList;
         }
     }
 }
