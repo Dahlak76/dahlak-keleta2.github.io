@@ -94,7 +94,7 @@ function getRandom(animals){
 console.log(getRandom(animals));
 var randomIndex = getRandom(animals);
 friends.push(animals[randomIndex].name);
-animals[0].friends.push(friends);
+animals[0]["friends"] = friends;
 console.log(animals);
 /**
  * Nice work! You're done Part 1. Pat yourself on the back and
