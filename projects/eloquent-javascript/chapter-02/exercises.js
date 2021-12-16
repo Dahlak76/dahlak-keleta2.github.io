@@ -18,10 +18,34 @@ function fizzBuzz() {
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {
-
+function drawChessboard(x) {
+var board = [];
+//iterate
+for(var i = 0; i < x; i++){
+  var row;
+  //if index is even
+  if(i % 2 === 0){
+    row = " ";
+    for(let i = 1; i < x; i++){
+      if(i % 2 === 0){
+        row += " ";
+      }else{
+        row += "#";
+      }
+    }
+  }else{
+    row = "#";
+    for (let i = 1; i < x; i++){
+      if(i % 2 === 0){
+        row += "#";
+      }
+    }
+  }
+  board.push(row);
 }
-
+return board.join("/n");
+}
+drawChessboard(8);
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

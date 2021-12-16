@@ -19,7 +19,13 @@ return Object.keys(object).join(" ");
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
-    return Object.toString(object).join(" ");
+    var newColl = [];
+    for(var key in object){
+        if(typeof object[key] === "string"){
+            newColl.push(object[key]);
+        }
+    }
+    return newColl.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -27,7 +33,11 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    
+    if(Array.isArray(collection) === true){
+        return "array";
+    }else if(typeof collection === "object" && collection !== null && collection instanceof Date === false){
+        return "object";
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -35,23 +45,30 @@ function arrayOrObject(collection) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
-    
-}
+        return string[0].toUpperCase() + string.slice(1);
+    }
+  
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 6 - Capitalize All Words /////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
+    var newStr = string.split(" ");
+    var capital = [];
+        for(var i = 0; i < newStr.length; i++){
+            capital.push(newStr[i][0].toUpperCase() + newStr[i].slice(1));
     
 }
-
+return capital.join(" ");
+}
 //////////////////////////////////////////////////////////////////////
 // Function 7 - Welcome Message //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-
+    return "Welcome " + object.name[0].toUpperCase() + object.name.slice(1) + "!";
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -59,7 +76,7 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-
+    return object.name[0].toUpperCase() + object.name.slice(1) + " is a " + object.species[0].toUpperCase() + object.species.slice(1);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -67,7 +84,11 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-
+    if(object.noises && object.noises.length > 0){
+        return object.noises.join(" ");
+    }else {
+        return "there are no noises";
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -75,7 +96,13 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
+    var newStr = string.split(" ");
+    for(var i = 0; i < newStr.length; i++){
+        if(newStr[i] === word){
+            return true;
+        }
+    }
+    return false;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -83,7 +110,8 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
-
+    object.friends.push(name);
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -91,7 +119,10 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-
+    if(object.hasOwnProperty("friends") && object["friends"].includes(name)){
+        return true;
+    }
+    return false;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -99,7 +130,13 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-
+    var nonFriendList = [];
+    for(var i = 0; i < array.length; i++){
+        if(array[i].friends.includes(name) === false && array[i].name !== name){
+            nonFriendList.push(array[i].name);
+        }
+    }
+    return nonFriendList;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -107,7 +144,7 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+  
 }
 
 //////////////////////////////////////////////////////////////////////
