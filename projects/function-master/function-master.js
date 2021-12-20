@@ -131,13 +131,13 @@ function isFriend(name, object) {
 
 function nonFriends(name, array) {
     var nonFriendList = [];
-    for(var i = 0; i < array.length; i++){
-        if(array[i].friends.includes(name) === false && array[i].name !== name){
-            nonFriendList.push(array[i].name);
+        for(var i = 0; i < array.length; i++){
+            if(array[i].friends.includes(name) === false && array[i].name !== name){
+                nonFriendList.push(array[i].name);
+            }
         }
+        return nonFriendList;
     }
-    return nonFriendList;
-}
 
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
@@ -145,6 +145,8 @@ function nonFriends(name, array) {
 
 function updateObject(object, key, value) {
   
+     object[key] = value;
+        return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -152,15 +154,21 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
-}
+    for(var i = 0; i < array.length; i++){
+        if(object[array[i]] !== undefined){
+            delete object[array[i]];
+        }
+    }
+    return object;
+    }
 
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
+   return [...new Set(array)];
+   
 }
 
 //////////////////////////////////////////////////////////////////////
