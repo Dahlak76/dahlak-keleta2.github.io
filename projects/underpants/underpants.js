@@ -432,7 +432,34 @@ _.every = function(collection, func){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 _.some = function(collection, func){
-
+    if(!func){
+        if(Array.isArray(collection)){
+            for(var i = 0; i < collection.length; i++){
+                 if(collection[i]){
+                     return true;
+                 }
+            }
+        } else {
+            for(var key in collection){
+                if(collection[key]){
+                    return true;
+                }
+            }
+        }
+    }else if(Array.isArray(collection)){
+        for(var i = 0; i < collection.length; i++){
+            if(func(collection[i], i, collection) === true){
+                return true;
+            }
+        }
+    }else if(typeof collection === "object"){
+        for(var key in collection){
+            if(func(collection[key], key, collection) === true){
+             return true;
+            }
+        }
+    }
+    return false;
 };
 
 /** _.reduce
@@ -484,6 +511,10 @@ _.reduce = function(array, func, seed){
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 
+_.extend = function(object, object1, object2){
+    Object.assign(object, object1, object2);
+    return object;
+};
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
