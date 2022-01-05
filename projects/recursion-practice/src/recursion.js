@@ -51,11 +51,33 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  //base
+  if(n === 0 || n === 1 || n === -1){
+    return 0;
+  }
+  //recursion
+  if(n < 0){
+  return n + 1 + sumBelow(n + 1);
+  }else{
+    return n - 1 + sumBelow(n - 1);
+  }
 };
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
+var range = function(x, y, output=[]) {
+  //base
+  if(x === y || x - y === -1 || x - y === 1){
+    return output;
+  }
+  //recursion
+  if(x < y){
+    output.push(x + 1);
+    return range(x + 1, y, output);
+  }else if(x > y){
+    output.push(x - 1);
+    return range(x -1, y, output);
+  }
 };
 
 // 7. Compute the exponent of a number.
@@ -64,6 +86,20 @@ var range = function(x, y) {
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  //base
+  if(exp === 0){
+    return 1;
+  }
+  if(exp === 1){
+    return base;
+  }
+
+  //recursion
+  if(exp > 0){
+    return base * exponent(base, exp -1);
+  }else if(exp < 0){
+    return 1 / (base * exponent(base, -exp -1));
+  }
 };
 
 // 8. Determine if a number is a power of two.
@@ -71,6 +107,20 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  //base
+  if(n === 0){
+    return false;
+  }
+  if(n === 1){
+    return true;
+  }
+
+  //recursion
+  if(n % 2 === 0){
+    return powerOfTwo(n / 2)
+  }else{
+    return false;
+  }
 };
 
 // 9. Write a function that accepts a string a reverses it.
@@ -114,6 +164,10 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  //base
+
+  //recursion
+
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter

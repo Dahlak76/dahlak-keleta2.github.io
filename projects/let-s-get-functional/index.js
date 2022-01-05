@@ -93,18 +93,43 @@ var firstLetterCount = function(array, letter){
 };
 
 var friendFirstLetterCount = function(array, customer, letter){
-    
-    var friendFirst = customer.friends_.reduce(array, function(count, friend){
-        if(customers.friends[0].toLowerCase() === letter.toLowerCase()){
-            return count += 1;
-        }else{
-            return count;
+    var customerList = _.filter(array, function(custObj){
+        if(custObj.name === customer) {
+            return true;
         }
-    }, 0)
-    return friendFirst;
+        return false;
+            
+    })
+    var friends = customerList[0].friends;
+
+    var startsWith = _.reduce(friends, function(startsWith, friend){
+    
+        if(friend.name[0].toLowerCase() === letter.toLowerCase()){
+            startsWith += 1;
+        }
+        return startsWith;
+    }, 0);
+    return startsWith;
 };
 
-var friendsCount;
+var friendsCount = function(array, name){
+//return arr who has olga in friend arr using filter if name true, push in new arr
+    var friends = _.filter(array, function(custObj){
+        if(custObj.friends === name){
+            return true;
+        }
+        return false;
+    })
+//itterate thru that arr and find cust string names that have olga as friends using map and return it
+    var friendList = _.map(friends, function(friends){
+        if(friends.friendname){
+            return true;
+        }
+        return false;
+    })
+    return friendList;
+    
+};
 
 var topThreeTags;
 
