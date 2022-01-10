@@ -114,25 +114,40 @@ var friendFirstLetterCount = function(array, customer, letter){
 
 var friendsCount = function(array, name){
 //return arr who has olga in friend arr using filter if name true, push in new arr
-    var friends = _.filter(array, function(custObj){
-        if(custObj.friends === name){
-            return true;
+    var hasFriends = _.filter(array, function(custObj){
+        var friends = custObj.friends;
+        for(var i = 0; i < friends.length; i++){
+            if(friends[i].name === name){
+                return true;
+            }
         }
         return false;
     })
 //itterate thru that arr and find cust string names that have olga as friends using map and return it
-    var friendList = _.map(friends, function(friends){
-        if(friends.friendname){
-            return true;
-        }
-        return false;
-    })
-    return friendList;
+    var names = _.map(hasFriends, function(customer){
+      return customer.name;
     
-};
+});
+return names;
+}
+var topThreeTags = function(array){
+    var tagsArr = [];
+        for(var i = 0; i < array.length; i++){
+            var tags = array[i].tags;
+            for(var j = 0; j < tags.length; j++){
+                tagsArr.push(tags[j]);
+            }
+        }
+    var tagNum = tagsArr.reduce(function(acc, current){
+        if(acc.current === true){
+            acc.current += 1;
+        }else{
+            acc.current = 1;
+        }
+        return acc;
+    }, {})
 
-var topThreeTags;
-
+}
 var genderCount;
 
 //////////////////////////////////////////////////////////////////////
