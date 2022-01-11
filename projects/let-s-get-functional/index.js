@@ -138,17 +138,36 @@ var topThreeTags = function(array){
                 tagsArr.push(tags[j]);
             }
         }
-    var tagNum = tagsArr.reduce(function(acc, current){
-        if(acc.current === true){
-            acc.current += 1;
-        }else{
-            acc.current = 1;
+        
+        var tagsCount = _.reduce(tagsArr, function(count, tag){
+            if(count[tag]){
+                count[tag] += 1;
+            }else{
+                count[tag] = 1;
+            }
+            return count;
+        }, {})
+        
+        var tagsCountArr = Object.entries(tagsCount);
+        var sortedArr = tagsCountArr.sort((a, b) => b[1] - a[1]);
+    
+        var returnArr = [];
+        returnArr.push(sortedArr[0][0]);
+        returnArr.push(sortedArr[1][0]);
+        returnArr.push(sortedArr[2][0]);
+        return returnArr;
+};
+var genderCount = function(array){
+    var genderCountObj = _.reduce(array, function(previous, current, index, array) {
+        if(previous[current.gender] === undefined) {
+            previous[current.gender] = 1;
+        } else {
+            previous[current.gender] += 1;
         }
-        return acc;
-    }, {})
-
-}
-var genderCount;
+        return previous;
+    }, {});
+    return genderCountObj;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
