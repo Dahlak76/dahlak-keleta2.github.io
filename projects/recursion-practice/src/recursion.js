@@ -34,11 +34,13 @@ var arraySum = function(array) {
 // 4. Check if a number is even.
 var isEven = function(n) {
   //base case
+  // stop if 1 or 0 with true of false return
   if (n === 1) {
     return false;
   } else if (n === 0) {
     return true;
   }
+  //retrun func with either -2 or +2
    if (n > 1) {
     return isEven(n - 2);
   } else if (n < 0) {
@@ -52,10 +54,13 @@ var isEven = function(n) {
 // sumBelow(7); // 21
 var sumBelow = function(n) {
   //base
+  //if n = 0,1,-1 return 0 and stop recursing
   if(n === 0 || n === 1 || n === -1){
     return 0;
   }
   //recursion
+  //if n positive return n + 1 and call func with n + 1
+  //if negative do same but with -
   if(n < 0){
   return n + 1 + sumBelow(n + 1);
   }else{
@@ -67,14 +72,18 @@ var sumBelow = function(n) {
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y, output=[]) {
   //base
+  //add output param in parameter
+  //if+ or - 1 rturn output and stop recurs
   if(x === y || x - y === -1 || x - y === 1){
     return output;
   }
   //recursion
+  //if x < y push x + 1 return range x + 1, y & output
   if(x < y){
     output.push(x + 1);
     return range(x + 1, y, output);
   }else if(x > y){
+    //if x > y push x - 1 return range x - 1, y & output
     output.push(x - 1);
     return range(x -1, y, output);
   }
@@ -95,6 +104,8 @@ var exponent = function(base, exp) {
   }
 
   //recursion
+  //if positive exp recurse with base and exp -1
+  //if negative 1 / base and -exp -1
   if(exp > 0){
     return base * exponent(base, exp -1);
   }else if(exp < 0){
@@ -108,6 +119,7 @@ var exponent = function(base, exp) {
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
   //base
+  //stop when num = 0 true or 1 false
   if(n === 0){
     return false;
   }
@@ -116,6 +128,7 @@ var powerOfTwo = function(n) {
   }
 
   //recursion
+  //if even call recurse by dividing by 2 else false
   if(n % 2 === 0){
     return powerOfTwo(n / 2)
   }else{
@@ -126,23 +139,29 @@ var powerOfTwo = function(n) {
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
   //base
+  //stop when striing is empty
   if(string.length === 0){
     return "";
   }
 
   //recursion
+  //reverse method using substring and charat
   return reverse(string.substring(1)) + string.charAt(0);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(str) {
   //base
+  //make sure all leters are case insensitive and no spaces
   var string = str.replace(/[" "]/g, "").toLowerCase();
+  //if string is 0 or 1, stop recursive by returning true
  if(string.length === 0 || string.length === 1){
    return true;
+   //if 1st and last dont match, return false and stop recursive
  }else if(string[0] !== string[string.length -1]){
    return false;
  }else{
+   //recursive call using string.slice and slice 1st and last each time
    return palindrome(string.slice(1, -1));
  }
 };
@@ -160,7 +179,17 @@ var modulo = function(x, y) {
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y) {
   
-};
+  if (y === 0){
+    return 0;
+  }
+  
+  if (y < 0) {
+    return -x + multiply(x, y + 1)
+  }
+  
+  return x + multiply(x, y - 1)
+ };
+ 
 
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
@@ -181,16 +210,27 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
-  //base
-
-  //recursion
-
-};
+  //base 
+  if (str1[0] !== str2[0]) {
+    return false;
+  }
+  if (str1[0] === str2[0] && str1.length === str2.length) {
+    return true;
+  }
+  //recursvie 
+  return compareStr(str1.slice(1), str2.slice(1));
+  };
+ 
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str){
-};
+  if (str.length === 0) {
+    return [];
+  }
+  return [str[0]].concat(createArray(str.slice(1)));
+ };
+ 
 
 // 17. Reverse the order of an array
 var reverseArr = function (array) {
