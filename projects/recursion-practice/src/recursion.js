@@ -377,7 +377,19 @@ var flatten = function(arrays) {
 
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
-var letterTally = function(str, obj) {
+var letterTally = function(str, obj = {}) {
+  //base
+  if(str.length === 0){
+    return obj;
+  }
+
+  //recursion
+  if(obj.hasOwnProperty(str[0])){
+    obj[str[0]] += 1;
+  }else{
+    obj[str[0]] = 1;
+  }
+  return letterTally(str.slice(1), obj)
 };
 
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
@@ -385,7 +397,18 @@ var letterTally = function(str, obj) {
 // elements should not be changed.
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
-var compress = function(list) {
+var compress = function(list, arr = []) {
+  //base
+  if(list.length === 0){
+    return arr;
+  }
+  //recursion
+  if(list[0] === list[1]){
+   return compress(list.slice(1), arr); 
+  }else{
+    arr.push(list[0]);
+    return compress(list.slice(1), arr);
+  }
 };
 
 // 32. Augment every element in a list with a new value where each element is an array
@@ -397,21 +420,72 @@ var augmentElements = function(array, aug) {
 // 33. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
-var minimizeZeroes = function(array) {
+var minimizeZeroes = function(array, arr = []) {
+  //base
+  if(array.length === 0){
+    return arr;
+  }
+  //recursion
+  if(array[0] === 0 && array[1] === 0){
+    return minimizeZeroes(array.slice(1), arr);
+  }else{
+    arr.push(array[0]);
+    return minimizeZeroes(array.slice(1), arr);
+  }
+  
 };
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
-var alternateSign = function(array) {
+var alternateSign = function(array, index = 0, arr = []) {
+  //base
+  if(array.length === index){
+    return arr;
+  }
+
+  //recursive
+ 
+  if(index % 2 === 0){
+    arr.push(Math.abs(array[index]));
+  }else{
+    arr.push(-Math.abs(array[index]));
+  }
+  
+  return alternateSign(array, index + 1, arr);
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str) {
+var numToText = function(str, string = "") {
+  var obj = {
+    1: "one",
+    2: "two",
+    3: "three",
+    4: "four",
+    5: "five",
+    6: "six",
+    7: "seven",
+    8: "eight",
+    9: "nine"
+  };
+  //base
+  if(str.length === 0){
+    return string;
+  }
+
+  //recursion
+  if(Object.keys(obj).includes(str[0])){
+    string = string + obj[str[0]];
+  return numToText(str.slice(1), string);
+  }else{
+    string = string + str[0];
+    return numToText(str.slice(1), string);
+  }
 };
+
 
 // *** EXTRA CREDIT ***
 
