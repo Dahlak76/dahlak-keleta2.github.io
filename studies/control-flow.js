@@ -14,6 +14,16 @@ if (field==empty) {
 } else {
     submitForm();
 }
+
+// example of an if/ else if/ else...
+var forcast = "sunny";
+if( forcast === "sunny"){
+  return "go out and play";
+}else if(forcast === "rainy"){
+  return "grab an umbrella";
+}else{
+  return "its a good day to read a book";
+}
 //For example, the above excerpt might be inside a function that runs when the user clicks
 //the Submit button for the form.
  

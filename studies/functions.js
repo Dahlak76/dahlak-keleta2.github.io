@@ -21,16 +21,15 @@
    //When JavaScript reaches a return statement, the function will stop executing.
    //If the function was invoked from a statement, JavaScript will "return" to execute the code after the invoking statement.
  
- Example
+ Example of a function declaration...
 Calculate the product of two numbers, and return the result:
- 
+
 let x = myFunction(4, 3);   // Function is called, return value will end up in x
  
 function myFunction(a, b) {
   return a * b;             // Function returns the product of a and b
 }
 // => x = 12
- 
  
 Functions often compute a return value. The return value is "returned" back to the "caller":
  *     ...For example, the following code defines a simple function named square
@@ -82,8 +81,19 @@ function square(number) {
           result.push(array[i]); // each index value at each itteration gets pushed into the new result array
         return result;
       }
- 
- 
+      // function expression example..
+      var add = function(x,y){   //the add function is contained and named in this variable. it takes 2 parameters (x & y) as placeholders
+        return x + y;            //in the code block it returns the sum of the 2 parameters
+      };
+      add(2,4);                   //this is a function call with the arguments (2 & 4) that are the requirements for the (x & y) parameters
+                                  // the ( 2 & 4) are called arguments and are passed like this reperesenting the parameters given earlier
+
+     // function declaration example... very similar to the above declaration except its not contained in a variable but the parameters, code block and function call is the same
+      function add(x, y){
+        return x + y;
+      }                                  
+      add(2,4);
+
       /**scopes and closure
        * scope: The current context of execution. The context in which values and expressions are "visible"
        * or can be referenced. If a variable or other expression is not "in the current scope,"
@@ -115,3 +125,17 @@ function exampleFunction() {
  
 console.log("Outside function");
 console.log(x);
+
+
+//closure example...
+
+function makeFunc() {    // <= outer function
+  var name = 'dahlak';
+  function displayName() {  // <= inner function
+    console.log(name);      // <= inner function accessing the outer functions variable
+  }
+  return displayName;       //return
+}
+
+var myFunc = makeFunc();   //declaring the function in a variable
+myFunc();

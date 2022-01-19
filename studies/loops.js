@@ -31,3 +31,47 @@
  for(var key in object){
     //code to run
 }
+
+// you can also use a for loop in reverse. the diffrence being that the start point will be the end of the array (.length - 1)
+// and your stop will be 0 (or wherever you need it) and your incremintor will be i-- instead of ++
+
+var num1 = [1, 2, 3, 4];
+for(var i = num1.length - 1; i >= 0; i--){
+   console.log(num1[i]);
+}
+
+/**
+ * 
+ * The while creates a loop that executes a specified statement as long as the test condition evaluates to true. 
+ * The condition is evaluated before executing the statement.
+ * An expression evaluated before each pass through the loop. If this condition evaluates to true, statement is executed. 
+ * When condition evaluates to false, execution continues with the statement after the while loop.
+ * 
+ */
+ let n = 0;
+
+ while (n < 3) {
+   n++;
+ }
+ 
+ console.log(n);
+ // expected output: 3
+
+ //The following while loop iterates as long as n is less than three.
+
+ var n = 0;
+var x = 0;
+
+while (n < 3) {
+  n++;
+  x += n;
+}
+/**
+ * Each iteration, the loop increments n and adds it to x. Therefore, x and n take on the following values:
+
+After the first pass: n = 1 and x = 1
+After the second pass: n = 2 and x = 3
+After the third pass: n = 3 and x = 6
+After completing the third pass, the condition n < 3 is no longer true, so the loop terminates.
+ * 
+ */

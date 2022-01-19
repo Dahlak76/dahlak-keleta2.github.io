@@ -30,8 +30,15 @@
   
  /* 4. arithmetic operators- +, -, *, /
  * An arithmetic operator takes numerical values (either literals or variables) as their operands and returns a single numerical value
+ * you can also use them with an equal sign after each sign to return a result by that operator
  */
  1 + 1 // adds 1 to 1
+ 5 - 1 // subtracts 1 from 5
+ 2 * 2 // multiplys 2 by 2
+ 10 / 2 // divides 10 by 2
+ 2 += 2 // adds 2 to 2 => 4
+ 6 /= 2 // divides 6 by 2 => 3
+
   
  /**
   *  5. unarary operators- A unary operation is an operation with only one operand.

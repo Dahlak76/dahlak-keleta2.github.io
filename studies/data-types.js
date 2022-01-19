@@ -40,6 +40,13 @@ if(age >= 20){
     return true;
 }       // => prints true
  
+if( 1 > 2){
+    return false;
+}else if(1 < 2){
+    return true;
+}else{
+    return "they are equal";
+}
 // object- stores various keyed collections in no particular order by key/value pairs contained by {}
 var dahlak = {
     name: "dahlak",
